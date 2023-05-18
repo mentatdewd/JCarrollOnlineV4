@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace webapi.Entities
+namespace jcarrollonlinev4.backend.Entities
 {
     public class Micropost
     {

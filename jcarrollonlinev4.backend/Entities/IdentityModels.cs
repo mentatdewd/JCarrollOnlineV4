@@ -1,21 +1,21 @@
 ﻿using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 
-namespace webapi.Entities
+namespace jcarrollonlinev4.backend.Entities
 {
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
+        public async Task<IdentityResult> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             if (manager == null)
             {
                 throw new ArgumentNullException(nameof(manager));
             }
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            ClaimsIdentity userIdentity = new ClaimsIdentity();// await manager.CreateAsync(this, DefaultAuthenticationTypes.ApplicationCookie).ConfigureAwait(false);
+            IdentityResult identityResult = await manager.CreateAsync(this, "password").ConfigureAwait(false);
             // Add custom user claims here
-            return userIdentity;
+            return identityResult;
         }
 
 

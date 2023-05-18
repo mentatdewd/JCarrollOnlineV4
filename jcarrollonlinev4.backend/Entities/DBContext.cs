@@ -1,12 +1,19 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace webapi.Entities
+namespace jcarrollonlinev4.backend.Entities
 {
-    public class webapiConnection : DbContext, IwebapiContext
+    public class JCarrollOnlineV4DbContext : DbContext, IJCarrollOnlineDbContext
     {
-        public webapiConnection(DbContextOptions<webapiConnection> context) : base(context)
+        public JCarrollOnlineV4DbContext(DbContextOptions<JCarrollOnlineV4DbContext> context) : base(context)
         {
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .UseSqlServer(
+                    @"Server=(localdb)\mssqllocaldb;Database=jcarrollonlinev4",
+                    providerOptions => { providerOptions.EnableRetryOnFailure(); });
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -18,8 +25,7 @@ namespace webapi.Entities
 
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<ApplicationUser>()
-                .HasKey(m => m);
+            modelBuilder.Entity<ApplicationUser>();
 
             modelBuilder.Entity<Micropost>();
 

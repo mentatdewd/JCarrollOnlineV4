@@ -1,0 +1,6 @@
+﻿namespace jcarrollonlinev4.backend.Models.Home
+{
+    public class ContactModel : ModelBase
+    {
+    }
+}

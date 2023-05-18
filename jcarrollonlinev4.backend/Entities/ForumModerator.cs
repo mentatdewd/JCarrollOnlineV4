@@ -1,4 +1,4 @@
-﻿namespace webapi.Entities
+﻿namespace jcarrollonlinev4.backend.Entities
 {
     public class ForumModerator
     {

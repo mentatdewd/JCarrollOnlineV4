@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace webapi.Entities
+namespace jcarrollonlinev4.backend.Entities
 {
     [Table("Fora")]
     public class Forum

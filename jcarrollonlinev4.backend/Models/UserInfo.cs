@@ -1,4 +1,4 @@
-﻿namespace webapi
+﻿namespace jcarrollonlinev4.backend.Models
 {
     public class UserInfo
     {

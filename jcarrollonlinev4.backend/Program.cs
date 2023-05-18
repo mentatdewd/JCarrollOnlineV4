@@ -1,5 +1,4 @@
-using Microsoft.OpenApi.Models;
-using webapi.Entities;
+using jcarrollonlinev4.backend.Entities;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,10 +8,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddDbContext<webapiConnection>(options =>
+builder.Services.AddDbContext<JCarrollOnlineV4DbContext>(options =>
 {
     options.UseSqlServer(builder.Configuration.GetConnectionString("jcarrollonlinev4connection"));
 });
+
 
 var app = builder.Build();
 

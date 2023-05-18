@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace webapi.Entities
+namespace jcarrollonlinev4.backend.Entities
 {
     public class BlogItem
     {
