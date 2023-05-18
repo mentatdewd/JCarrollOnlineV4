@@ -1,0 +1,36 @@
+<jcol-navbar></jcol-navbar>
+<!--@using JCarrollOnlineV2.ViewModels
+@model HomeViewModel-->
+
+<app-root></app-root>
+
+<div class="container">
+  <div class="row" xmlns="http://www.w3.org/1999/html">
+    <aside class="col-md-4">
+      <section>
+        <app-user-info></app-user-info>
+      </section>
+      <section>
+        <app-micro-post-form></app-micro-post-form>
+      </section>
+      <section>
+        <app-latest-forum-threads></app-latest-forum-threads>
+      </section>
+    </aside>
+    <div class="col-md-5">
+      <h2>Micro-Posts</h2>
+      <app-micro-post-feed></app-micro-post-feed>
+    </div>
+    <aside class="col-md-3">
+      <app-rss-feed></app-rss-feed>
+    </aside>
+  </div>
+  <hr />
+  <div class="col-md-12">
+    <div class="blogFeed">
+      <h1>Blog</h1>
+      <app-blog-feed></app-blog-feed>
+    </div>
+  </div>
+</div>
+

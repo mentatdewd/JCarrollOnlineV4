@@ -1,0 +1,35 @@
+.mat-form-field-label {
+  white-space: normal;
+}
+
+textarea.mat-input-element {
+  padding: 0px 0;
+  margin: 5px 0;
+}
+
+.mat-input-placeholder {
+  white-space: normal;
+}
+
+textarea {
+  width: 100%;
+}
+
+.post_button_container {
+    align-content: center;
+}
+
+.container {
+  padding: 10px;
+  border: 1px solid silver;
+}
+
+  .container .text {
+    resize: none;
+    outline: none;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    height: 100%;
+    margin: -10px;
+  }
