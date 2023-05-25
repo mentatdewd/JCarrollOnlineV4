@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { JcolNavbarComponent } from './jcol-navbar/jcol-navbar.component';
@@ -20,9 +20,10 @@ import { LatestForumThreadsComponent } from './latest-forum-threads/latest-forum
 import { MicroPostFeedComponent } from './micro-post-feed/micro-post-feed.component';
 import { RssFeedComponent } from './rss-feed/rss-feed.component';
 import { BlogFeedComponent } from './blog-feed/blog-feed.component';
-import { GravatarDirective } from './gravatar.directive';
+import { GravatarDirective } from '../directives/gravatar.directive';
 
-import { UserInfoService } from './userinfo.service';
+import { UserInfoService } from '../services/userinfo.service';
+import { ForaService } from '../services/fora.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -33,6 +34,7 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
 import { SandboxComponent } from './sandbox/sandbox.component';
 import { YellowstoneSlideshowComponent } from './yellowstone-slideshow/yellowstone-slideshow.component';
+import { CreateComponent } from './fora/create/create.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +60,7 @@ import { YellowstoneSlideshowComponent } from './yellowstone-slideshow/yellowsto
     ContactComponent,
     SandboxComponent,
     YellowstoneSlideshowComponent,
+    CreateComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +74,7 @@ import { YellowstoneSlideshowComponent } from './yellowstone-slideshow/yellowsto
       { path: 'Login', component: LoginComponent },
       { path: 'Users', component: UsersComponent },
       { path: 'Fora', component: ForaComponent },
+      { path: 'Fora/Create', component: CreateComponent },
       { path: 'Profile', component: ProfileComponent },
       { path: 'About', component: AboutComponent },
       { path: 'Contact', component: ContactComponent },
@@ -84,7 +88,7 @@ import { YellowstoneSlideshowComponent } from './yellowstone-slideshow/yellowsto
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [UserInfoService],
+  providers: [UserInfoService, ForaService, FormBuilder],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

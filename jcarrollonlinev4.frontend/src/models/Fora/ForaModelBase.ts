@@ -1,5 +1,7 @@
-import { IModelBase } from "../IModelBase";
+export class ForaModelBase {
+  constructor(Id: number) { }
+}
 
-export interface ForaModelBase extends IModelBase {
+export interface IForaModelBase {
   Id: number;
 }

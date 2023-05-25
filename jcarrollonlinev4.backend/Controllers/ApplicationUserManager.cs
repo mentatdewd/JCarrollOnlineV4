@@ -1,6 +1,6 @@
 ﻿namespace JCarrollOnlineV2.Controllers
 {
-    public class ApplicationUserManager
-    {
-    }
+    //public class ApplicationUserManager
+    //{
+    //}
 }

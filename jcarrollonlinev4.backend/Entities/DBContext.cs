@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics;
 
 namespace jcarrollonlinev4.backend.Entities
 {
@@ -23,6 +24,7 @@ namespace jcarrollonlinev4.backend.Entities
                 throw new ArgumentNullException(nameof(modelBuilder));
             }
 
+            Debugger.Break();
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<ApplicationUser>();

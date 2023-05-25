@@ -1,8 +1,5 @@
-import { ForaModelBase } from "./ForaModelBase";
-
-export interface ForaCreateModel extends ForaModelBase {
-  Title?: string;
-  Description?: string;
-  CreatedAt: Date;
-  UpdatedAt: Date;
+export class ForaCreateModel {
+  public title: string = "";
+  public description: string = ""
+  public id: number = -1;
 }

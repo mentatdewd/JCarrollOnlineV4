@@ -1,19 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace jcarrollonlinev4.backend.Models.Fora
 {
-    public class ForaCreateModel : ForaModelBase
+    public class ForaCreateModel
     {
-        [Required]
-        [Display(Name = "Title")]
-        public string? Title { get; set; }
+        public string? title { get; set; } = string.Empty;
 
-        [Required]
-        [Display(Name = "Description")]
-        public string? Description { get; set; }
+        public string? description { get; set; } = string.Empty;
 
-        public DateTime CreatedAt { get; set; }
-        public DateTime UpdatedAt { get; set; }
+        public int? id { get; set; }
     }
-
 }

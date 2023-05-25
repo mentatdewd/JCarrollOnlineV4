@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatFormField } from '@angular/material/form-field';
 import { MatCard } from '@angular/material/card';
-import { UserInfoService } from '../userinfo.service';
+import { UserInfoService } from '../../services/userinfo.service';
 import { UserInfoModel } from '../../models/user-info';
 
 @Component({

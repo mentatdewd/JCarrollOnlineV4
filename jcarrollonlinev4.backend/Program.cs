@@ -13,7 +13,6 @@ builder.Services.AddDbContext<JCarrollOnlineV4DbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("jcarrollonlinev4connection"));
 });
 
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

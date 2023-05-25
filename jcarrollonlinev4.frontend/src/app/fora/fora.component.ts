@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-fora',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./fora.component.css']
 })
 export class ForaComponent {
-
+  constructor(private router: Router) { }
 }
