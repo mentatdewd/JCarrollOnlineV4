@@ -1,5 +1,5 @@
 ﻿using jcarrollonlinev4.backend.Entities;
-using jcarrollonlinev4.backend.Models.Fora;
+using jcarrollonlinev4.backend.Models.ForumThreadEntries;
 using jcarrollonlinev4.backend.Models.Rss;
 using Microsoft.EntityFrameworkCore;
 using Omu.ValueInjecter;
@@ -33,7 +33,7 @@ namespace JCarrollOnlineV2.Controllers.Helpers
                     throw new ArgumentNullException(nameof(data));
                 }
 
-                ThreadEntry? fte = await data.ForumThreadEntry.Where(m => m.RootId == rootId).OrderByDescending(m => m.UpdatedAt).FirstOrDefaultAsync().ConfigureAwait(false);
+                ForumThreadEntry? fte = await data.ForumThreadEntry.Where(m => m.RootId == rootId).OrderByDescending(m => m.UpdatedAt).FirstOrDefaultAsync().ConfigureAwait(false);
                 return fte.UpdatedAt;
             }
             else
@@ -51,7 +51,7 @@ namespace JCarrollOnlineV2.Controllers.Helpers
                 throw new ArgumentNullException(nameof(data));
             }
 
-            ThreadEntry? forumThreadEntry = await data.ForumThreadEntry.Where(i => i.Forum.Id == forum.Id)
+            ForumThreadEntry? forumThreadEntry = await data.ForumThreadEntry.Where(i => i.Forum.Id == forum.Id)
                 .Include(i => i.Author)
                 .OrderByDescending(i => i.UpdatedAt)
                 .FirstOrDefaultAsync().ConfigureAwait(false);
@@ -60,9 +60,9 @@ namespace JCarrollOnlineV2.Controllers.Helpers
             {
                 lastThreadViewModel.InjectFrom(forumThreadEntry);
                 //lastThreadViewModel.Author = new ApplicationUserViewModel();
-                lastThreadViewModel.Author.InjectFrom(forumThreadEntry.Author);
-                lastThreadViewModel.Forum = new ForaModel();
-                lastThreadViewModel.Forum.InjectFrom(forumThreadEntry.Forum);
+                //lastThreadViewModel.Author.InjectFrom(forumThreadEntry.Author);
+                //lastThreadViewModel.Forum = new ForaModel();
+                //lastThreadViewModel.Forum.InjectFrom(forumThreadEntry.Forum);
 
                 bool rootNotFound = true;
 
@@ -70,7 +70,7 @@ namespace JCarrollOnlineV2.Controllers.Helpers
                 {
                     while (rootNotFound)
                     {
-                        forumThreadEntry = await data.ForumThreadEntry.FindAsync(forumThreadEntry.ParentId).ConfigureAwait(false);
+                        //forumThreadEntry = await data.ForumThreadEntry.FindAsync(forumThreadEntry.ParentId).ConfigureAwait(false);
                         if (forumThreadEntry != null)
                         {
                             if (forumThreadEntry.ParentId == null)
@@ -81,7 +81,7 @@ namespace JCarrollOnlineV2.Controllers.Helpers
                     }
                 }
 
-                lastThreadViewModel.PostRoot = forumThreadEntry.Id;
+                //lastThreadViewModel.PostRoot = forumThreadEntry.Id;
 
                 return lastThreadViewModel;
             }

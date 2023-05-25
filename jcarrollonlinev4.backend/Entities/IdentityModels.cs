@@ -24,7 +24,7 @@ namespace jcarrollonlinev4.backend.Entities
         public bool MicroPostSmsNotifications { get; set; }
 
         // Navigation Property
-        public virtual ICollection<ThreadEntry>? ForumThreadEntries { get; private set; }
+        public virtual ICollection<ForumThreadEntry>? ForumThreadEntries { get; private set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public virtual ICollection<Micropost>? Microposts { get; private set; }

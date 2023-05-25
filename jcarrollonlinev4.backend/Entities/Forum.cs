@@ -26,7 +26,7 @@ namespace jcarrollonlinev4.backend.Entities
         public DateTime UpdatedAt { get; set; } //:null => false
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        public virtual Collection<ThreadEntry>? ForumThreadEntries { get; private set; }
+        public virtual Collection<ForumThreadEntry>? ForumThreadEntries { get; private set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
         public virtual Collection<ForumModerator>? ForumModerators { get; private set; }
     }

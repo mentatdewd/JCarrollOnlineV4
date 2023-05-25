@@ -224,6 +224,56 @@ namespace jcarrollonlinev4.backend.Migrations
                     b.ToTable("ForumModerator");
                 });
 
+            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.ForumThreadEntry", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("AuthorId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ForumId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Locked")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("ParentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PostNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("RootId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("nvarchar(255)");
+
+                    b.Property<DateTime>("UpdatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
+
+                    b.HasIndex("ForumId");
+
+                    b.ToTable("ForumThreadEntry");
+                });
+
             modelBuilder.Entity("jcarrollonlinev4.backend.Entities.Micropost", b =>
                 {
                     b.Property<int>("Id")
@@ -329,56 +379,6 @@ namespace jcarrollonlinev4.backend.Migrations
                     b.ToTable("NLog");
                 });
 
-            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.ThreadEntry", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("AuthorId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("ForumId")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("Locked")
-                        .HasColumnType("bit");
-
-                    b.Property<int?>("ParentId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PostNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("RootId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<DateTime>("UpdatedAt")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
-
-                    b.HasIndex("ForumId");
-
-                    b.ToTable("ForumThreadEntry");
-                });
-
             modelBuilder.Entity("ApplicationUserApplicationUser", b =>
                 {
                     b.HasOne("jcarrollonlinev4.backend.Entities.ApplicationUser", null)
@@ -425,18 +425,7 @@ namespace jcarrollonlinev4.backend.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.Micropost", b =>
-                {
-                    b.HasOne("jcarrollonlinev4.backend.Entities.ApplicationUser", "Author")
-                        .WithMany("Microposts")
-                        .HasForeignKey("AuthorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Author");
-                });
-
-            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.ThreadEntry", b =>
+            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.ForumThreadEntry", b =>
                 {
                     b.HasOne("jcarrollonlinev4.backend.Entities.ApplicationUser", "Author")
                         .WithMany("ForumThreadEntries")
@@ -453,6 +442,17 @@ namespace jcarrollonlinev4.backend.Migrations
                     b.Navigation("Author");
 
                     b.Navigation("Forum");
+                });
+
+            modelBuilder.Entity("jcarrollonlinev4.backend.Entities.Micropost", b =>
+                {
+                    b.HasOne("jcarrollonlinev4.backend.Entities.ApplicationUser", "Author")
+                        .WithMany("Microposts")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
                 });
 
             modelBuilder.Entity("jcarrollonlinev4.backend.Entities.ApplicationUser", b =>

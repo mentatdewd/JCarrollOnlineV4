@@ -16,7 +16,7 @@ namespace jcarrollonlinev4.backend.Entities
 
         DbSet<ForumModerator> ForumModerator { get; set; }
 
-        DbSet<ThreadEntry> ForumThreadEntry { get; set; }
+        DbSet<ForumThreadEntry> ForumThreadEntry { get; set; }
 
         DbSet<Micropost> Micropost { get; set; }
 

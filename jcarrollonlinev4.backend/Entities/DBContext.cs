@@ -33,12 +33,14 @@ namespace jcarrollonlinev4.backend.Entities
 
             modelBuilder.Entity<BlogItem>();
 
-            modelBuilder.Entity<Forum>();
+            modelBuilder.Entity<Forum>()
+                .HasMany(e => e.ForumThreadEntries)
+                .WithOne(e => e.Forum)
+                .HasForeignKey(e => e.ForumId);
 
             modelBuilder.Entity<ForumModerator>();
 
-            modelBuilder.Entity<ThreadEntry>();
-
+            modelBuilder.Entity<ForumThreadEntry>();
 
             modelBuilder.Entity<Entities.NLog>();
         }
@@ -46,7 +48,7 @@ namespace jcarrollonlinev4.backend.Entities
         public virtual DbSet<ApplicationUser> ApplicationUser { get; set; }
         public DbSet<Forum> Forum { get; set; }
         public DbSet<ForumModerator> ForumModerator { get; set; }
-        public DbSet<ThreadEntry> ForumThreadEntry { get; set; }
+        public DbSet<ForumThreadEntry> ForumThreadEntry { get; set; }
         public DbSet<Micropost> Micropost { get; set; }
         public DbSet<BlogItem> BlogItem { get; set; }
         public DbSet<BlogItemComment> BlogItemComment { get; set; }
