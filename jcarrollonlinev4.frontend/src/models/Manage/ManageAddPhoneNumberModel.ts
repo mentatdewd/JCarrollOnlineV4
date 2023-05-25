@@ -1,5 +1,3 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageAddPhoneNumberModel extends IModelBase {
+export interface ManageAddPhoneNumberModel {
   Number: string;
 }

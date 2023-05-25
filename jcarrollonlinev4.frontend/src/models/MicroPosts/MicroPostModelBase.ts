@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface MicropostModelBase extends IModelBase {
+export interface MicropostModelBase {
   UserId?: string;
   Email?: string;
 }

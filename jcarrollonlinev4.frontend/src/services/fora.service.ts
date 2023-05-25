@@ -1,20 +1,22 @@
 import { Injectable } from '@angular/core';
-import { ForaCreateModel } from '../models/Fora/ForaCreateModel';
+import { ForaPostModel } from '../models/Fora/ForaPostModel';
 
 import {
   HttpClient,
   HttpErrorResponse,
   HttpHeaders,
+  HttpResponse,
 } from '@angular/common/http';
-import { catchError, Observable, throwError } from 'rxjs';
+import { catchError, mergeMap, Observable, throwError } from 'rxjs';
+import { ForaGetModel } from '../models/Fora/ForaGetModel';
 
 @Injectable({
   providedIn: 'root',
 })
 
 export class ForaService {
-  apiUrl: string = 'https://localhost:7071/api/Fora/CreateForum';
-  headers = new HttpHeaders().set('Content-Type', 'application/json').set('charset','utf-8');
+  apiUrl: string = 'https://localhost:7071/api/Fora/';
+  headers = new HttpHeaders().set('Content-Type', 'application/json').set('charset', 'utf-8');
 
   constructor(private http: HttpClient) { }
 
@@ -33,9 +35,14 @@ export class ForaService {
   }
 
   // Post
-  create(model: ForaCreateModel): Observable<ForaCreateModel> {
-    return this.http.post<ForaCreateModel>(`${this.apiUrl}`, model, { headers: this.headers }).pipe(
+  create(model: ForaPostModel): Observable<ForaPostModel> {
+    return this.http.post<ForaPostModel>(`${this.apiUrl}` + 'CreateForum', model, { headers: this.headers }).pipe(
       catchError(e => this.handleError(e))
     );
   }
+
+  // Get
+  get(): Observable<ForaGetModel[]> {
+    return this.http.get<ForaGetModel[]>(`${this.apiUrl}` + 'GetFora', { headers: this.headers });
+  };
 }

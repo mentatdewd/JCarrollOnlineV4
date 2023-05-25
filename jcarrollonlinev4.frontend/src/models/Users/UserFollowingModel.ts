@@ -1,8 +1,6 @@
 import { UserItemModel } from "./UserItemModel";
-import { UserModelBase } from "./UserModelBase";
 
-export interface UserFollowingModel extends UserModelBase {
+export interface UserFollowingModel {
   UserFollowingModel: UserItemModel[];
   Users: UserItemModel[];
-}
 }

@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageChangePasswordModel extends IModelBase {
+export interface ManageChangePasswordModel {
   OldPassword: string;
   NewPassword: string;
   ConfirmPassword: string;

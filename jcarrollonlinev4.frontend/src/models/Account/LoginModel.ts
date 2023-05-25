@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface LoginModel extends IModelBase {
+export interface LoginModel {
   UserName?: string;
   Password?: string;
   RememberMe?: boolean;

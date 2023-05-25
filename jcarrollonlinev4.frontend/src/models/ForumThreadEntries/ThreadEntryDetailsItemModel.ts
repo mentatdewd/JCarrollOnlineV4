@@ -1,4 +1,4 @@
-import { ForaModel } from "../Fora/ForaModel";
+import { ForaGetModel } from "../Fora/ForaGetModel";
 import { ApplicationUserModel } from "../Users/ApplicationUserModel";
 import { ThreadEntriesModelBase } from "./ThreadEntriesModelBase";
 
@@ -6,7 +6,7 @@ export interface ThreadEntryDetailsItemModel extends ThreadEntriesModelBase {
   ParentId: number;
   RootId: number;
   ParentPostNumber: number;
-  Forum?: ForaModel;
+  Forum?: ForaGetModel;
   ParentAuthor?: string;
   PostCount: number;
   Author?: ApplicationUserModel;

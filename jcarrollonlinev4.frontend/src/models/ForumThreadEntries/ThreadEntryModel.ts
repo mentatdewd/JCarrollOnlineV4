@@ -1,7 +1,7 @@
-import { IModelBase } from "../IModelBase";
+import { ForaGetModel } from "../Fora/ForaGetModel";
 import { ApplicationUserModel } from "../Users/ApplicationUserModel";
 
-export interface ThreadEntryModel extends IModelBase {
+export interface ThreadEntryModel {
   Title?: string;
   Content?: string;
   Locked: boolean;
@@ -11,5 +11,5 @@ export interface ThreadEntryModel extends IModelBase {
   ParentId: number;
   RootIdpublic: number;
   Author: ApplicationUserModel;
-  Forum?: ForaModel;
+  Forum?: ForaGetModel;
 }

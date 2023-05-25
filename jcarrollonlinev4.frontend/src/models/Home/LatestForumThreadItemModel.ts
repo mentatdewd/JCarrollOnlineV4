@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface LatestForumThreadItemModel extends IModelBase {
+export interface LatestForumThreadItemModel {
   ForumTitle: string;
   ThreadTitle: string;
   ForumId: number;

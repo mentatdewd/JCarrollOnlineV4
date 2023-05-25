@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface RegisterModel extends IModelBase {
+export interface RegisterModel {
   UserName?: string;
   Email?: string;
   Password?: string;

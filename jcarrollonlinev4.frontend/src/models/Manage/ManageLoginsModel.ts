@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageLoginsModel extends IModelBase {
+export interface ManageLoginsModel {
   //CurrentLogins: UserLoginInfoModel[];
   //OtherLogins: AuthenticationDescription;
   StatusMessage: string;

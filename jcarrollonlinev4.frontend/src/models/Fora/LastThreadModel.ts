@@ -1,11 +1,10 @@
-import { ForaModel } from "./ForaModel";
-import { ForaModelBase } from "./ForaModelBase";
+import { ForaGetModel } from "./ForaGetModel";
 
-export interface LastThreadModel extends ForaModelBase {
+export interface LastThreadModel {
   UpdatedAt: Date;
   Title?: string;
   PostRoot: number;
   PostNumber: number;
   Author?: string;
-  Forum?: ForaModel;
+  Forum?: ForaGetModel;
 }

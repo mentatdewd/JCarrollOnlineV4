@@ -1,6 +1,4 @@
-import { ForaModelBase } from "./ForaModelBase";
-
-export interface ForumDeleteModel extends ForaModelBase
+export interface ForumDeleteModel
 {
   Title?: string;
   Description?: string;

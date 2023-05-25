@@ -1,5 +1,3 @@
-import { ForaModelBase } from "./ForaModelBase";
-
-export interface ForaIndexModel extends ForaModelBase {
+export interface ForaIndexModel {
   ForaIndexItems: ForaIndexModel;
 }

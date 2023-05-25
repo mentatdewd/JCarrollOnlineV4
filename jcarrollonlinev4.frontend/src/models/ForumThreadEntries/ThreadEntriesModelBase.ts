@@ -1,5 +1,3 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ThreadEntriesModelBase extends IModelBase {
+export interface ThreadEntriesModelBase {
   Id?: number;
 }

@@ -1,9 +1,8 @@
-import { ForaModel } from "../Fora/ForaModel";
+import { ForaGetModel } from "../Fora/ForaGetModel";
 import { ApplicationUserModel } from "../Users/ApplicationUserModel";
-import { ThreadEntriesModelBase } from "./ThreadEntriesModelBase";
 
-export interface ThreadEntryIndexItemModel extends ThreadEntriesModelBase {
-  Forum: ForaModel;
+export interface ThreadEntryIndexItemModel {
+  Forum: ForaGetModel;
   Replies: number;
   LastReply: Date;
   Recs: number;

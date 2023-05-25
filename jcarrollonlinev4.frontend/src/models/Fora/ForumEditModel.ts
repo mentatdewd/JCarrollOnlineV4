@@ -1,6 +1,4 @@
-import { ForaModelBase } from "./ForaModelBase";
-
-export interface ForumEditModel extends ForaModelBase {
+export interface ForumEditModel {
   Title?: string;
   Description?: string;
   CreatedAt: Date;

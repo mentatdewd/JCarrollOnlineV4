@@ -1,4 +1,4 @@
-import { ForaModel } from "../Fora/ForaModel";
+import { ForaGetModel } from "../Fora/ForaGetModel";
 import { ThreadEntriesModelBase } from "./ThreadEntriesModelBase";
 import { ThreadEntryDetailItemsModel } from "./ThreadEntryDetailItemsModel";
 
@@ -6,6 +6,6 @@ import { ThreadEntryDetailItemsModel } from "./ThreadEntryDetailItemsModel";
     {
       ForumThreadEntryDetailItems: ThreadEntryDetailItemsModel;
 
-      ForaDetailsModel: ForaModel;
+      ForaDetailsModel: ForaGetModel;
       Replies: number;
     }

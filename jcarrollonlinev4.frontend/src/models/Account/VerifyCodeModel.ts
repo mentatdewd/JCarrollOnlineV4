@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface VerifyCodeModel extends IModelBase {
+export interface VerifyCodeModel {
   Provider?: string;
   Code?: string;
   ReturnUrl?: string;

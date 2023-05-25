@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageConfigureTwoFactorModel extends IModelBase {
+export interface ManageConfigureTwoFactorModel {
   SelectedProvider: string;
   //Providers: System.Web.Mvc.SelectListItem[];
 }

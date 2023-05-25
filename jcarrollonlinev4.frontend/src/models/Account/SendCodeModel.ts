@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface SendCodeModel extends IModelBase {
+export interface SendCodeModel {
   SelectedProvider?: string;
   //public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
   ReturnUrl?: string;

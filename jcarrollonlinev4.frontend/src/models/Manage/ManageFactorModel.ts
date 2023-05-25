@@ -1,5 +1,3 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageFactorModel extends IModelBase {
+export interface ManageFactorModel {
   Purpose: string;
 }

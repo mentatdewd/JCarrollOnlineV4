@@ -1,5 +1,3 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ExternalLoginListModel extends IModelBase {
+export interface ExternalLoginListModel {
   ReturnUrl?: string;
 }

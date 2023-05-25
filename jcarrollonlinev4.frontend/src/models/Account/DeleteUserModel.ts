@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface DeleteUserModel extends IModelBase{
+export interface DeleteUserModel {
   Id?: string;
   UserName?: string;
   Email?: string;

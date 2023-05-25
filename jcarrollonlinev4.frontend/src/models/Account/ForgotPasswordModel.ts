@@ -1,5 +1,3 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ForgotPasswordModel extends IModelBase {
+export interface ForgotPasswordModel {
   Email?: string;
 }

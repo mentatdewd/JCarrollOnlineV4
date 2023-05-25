@@ -1,7 +1,5 @@
-import { UserModelBase } from "./UserModelBase";
+import { UserItemModel } from "./UserItemModel";
 
-    export interface UserFollowersModel extends UserModelBase
-    {
-      Users?: UserItemModel[];
-    }
+export interface UserFollowersModel {
+  Users?: UserItemModel[];
 }

@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageVerifyPhoneNumberModel extends IModelBase {
+export interface ManageVerifyPhoneNumberModel {
   Code: string;
   PhoneNumber: string;
   Status: string;

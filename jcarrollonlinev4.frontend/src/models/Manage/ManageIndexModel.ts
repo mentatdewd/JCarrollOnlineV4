@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ManageIndexModel extends IModelBase {
+export interface ManageIndexModel {
   HasPassword: boolean;
   //Logins: UserLoginInfoModel;
   PhoneNumber: string;

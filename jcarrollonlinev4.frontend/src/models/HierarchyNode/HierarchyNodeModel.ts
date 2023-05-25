@@ -1,9 +1,7 @@
-import { IModelBase } from "../IModelBase";
-
-export interface HierarchyNodesModel<T> extends IModelBase {
+export class HierarchyNodesModel<T> {
   Entity?: T;
-  ChildNodes: HierarchyNodesModel<T>[];
-  Depth: number;
+  ChildNodes?: HierarchyNodesModel<T>[];
+  Depth: number = 0;
   Parent?: T;
-  ImageList: string[];
+  ImageList?: string[];
 }

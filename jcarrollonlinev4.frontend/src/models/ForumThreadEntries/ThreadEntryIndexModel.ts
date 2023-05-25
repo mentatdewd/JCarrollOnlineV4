@@ -1,11 +1,10 @@
-import { ForaModel } from "../Fora/ForaModel";
-import { ThreadEntriesModelBase } from "./ThreadEntriesModelBase";
+import { ForaGetModel } from "../Fora/ForaGetModel";
 import { ThreadEntryIndexItemModel } from "./ThreadEntryIndexItemModel";
 
-export interface ThreadEntryIndexModel extends ThreadEntriesModelBase {
+export interface ThreadEntryIndexModel {
   ThreadEntryIndex: ThreadEntryIndexItemModel[];
 
-  Forum: ForaModel;
+  Forum: ForaGetModel;
   Title: string;
   Content: string;
 }

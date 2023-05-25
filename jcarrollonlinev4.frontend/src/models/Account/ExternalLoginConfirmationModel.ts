@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface ExternalLoginConfirmationModel extends IModelBase
+export interface ExternalLoginConfirmationModel
 {
   SiteUserName?:   string;
   Email?: string;

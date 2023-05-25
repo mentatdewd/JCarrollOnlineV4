@@ -1,4 +1,7 @@
-export interface ThreadEntryDetailItemsModel extends ThreadEntriesModelBase {
+import { HierarchyNodesModel } from "../HierarchyNode/HierarchyNodeModel";
+import { ThreadEntryModel } from "./ThreadEntryModel";
+
+export interface ThreadEntryDetailItemsModel {
   NumberOfReplies: number;
-  ForumThreadEntries: HierarchyNodesModel[ThreadEntryDetailsItemModel]
+  ForumThreadEntries: HierarchyNodesModel<ThreadEntryModel>;
 }

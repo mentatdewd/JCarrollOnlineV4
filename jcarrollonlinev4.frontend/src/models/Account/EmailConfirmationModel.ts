@@ -1,6 +1,4 @@
-import { IModelBase } from "../IModelBase";
-
-export interface EmailConfirmationModel extends IModelBase {
+export interface EmailConfirmationModel {
   Id?: string;
   UserName?: string;
   Email?: string;

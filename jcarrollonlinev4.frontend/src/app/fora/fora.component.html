@@ -1,4 +1,37 @@
 <p>fora works!</p>
+
+<!--<select disabled="disabled" name="Users" size="20">
+  <option *ngFor="let forum of this.fora">
+    {{forum.title}}, {{forum.description}}, {{forum.createdAt}}, {{forum.updatedAt}}, {{forum.author}}
+  </option>
+</select>-->
+
+<h3 class="p-3 text-center">Fora</h3>
+<div class="container">
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Author</th>
+        <th>Created on</th>
+        <th>Updated on</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let forum of this.fora">
+        <td>{{forum.title}}</td>
+        <td>{{forum.description}}</td>
+        <td>{{forum.author}}</td>
+        <td>{{forum.createdAt}}</td>
+        <td>{{forum.updatedAt}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
 <p class="float-right">
   <button [routerLink]="'./Create'">Create New Forum</button>
 </p>
+
