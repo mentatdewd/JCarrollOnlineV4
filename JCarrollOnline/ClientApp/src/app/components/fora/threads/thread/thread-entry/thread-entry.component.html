@@ -1,0 +1,32 @@
+<div *ngIf="this.isThreadDataArrived">
+  <div>
+    <mat-card class="card-container">
+      <mat-card-title>
+        <div class="thread-entry-container">
+          <div>{{this.threadEntry.author}} ({{this.threadEntry.authorForumPostCount}} posts)</div>
+          <div *ngIf="this.threadEntry.parentId != -1 && this.threadEntry.parentId != this.threadEntry.rootId">Reply to post #{{this.parentThreadEntry.postNumber}}</div>
+          <div *ngIf="this.threadEntry.parentId != -1 && this.threadEntry.parentId == this.threadEntry.rootId">Reply to Original Post</div>
+          <div *ngIf="this.threadEntry.parentId == -1">Original Post</div>
+        </div>
+      </mat-card-title>
+      <mat-card-subtitle>
+        <div class="thread-entry-container">
+          <div>{{this.threadEntry.postNumber}} {{this.threadEntry.title}}</div>
+          <div>{{ this.threadEntry.createdAt | date:'EEEE d MMMM y h:mm a'}}</div>
+        </div>
+      </mat-card-subtitle>
+      <mat-card-content>
+        <img mat-card-avatar appGravatar email="mentatdewd@comcast.net">
+
+        {{this.threadEntry.content}}
+      </mat-card-content>
+      <mat-card-footer>
+        <div class="thread-entry-container">
+          <div>Back to top</div>
+          <a [routerLink]="'./thread-reply'" [queryParams]="{parentId: threadEntry.id, forumId: threadEntry.forumId}">Reply</a>
+        </div>
+
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

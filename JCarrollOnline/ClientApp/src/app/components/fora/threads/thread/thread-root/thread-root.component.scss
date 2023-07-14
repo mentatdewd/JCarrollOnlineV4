@@ -1,0 +1,22 @@
+.thread-entry-container {
+  /* Style */
+/*  height: 48px;
+  line-height: 48px;
+*/  background: teal;
+  color: white;
+  font-family: Helvetica;
+  padding: 0px;
+  box-sizing: border-box;
+  /* Actual logic */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thread-entry-container div:last-child {
+  text-align: right;
+}
+
+.thread-entry-container div {
+  flex: 1 1 auto;
+}

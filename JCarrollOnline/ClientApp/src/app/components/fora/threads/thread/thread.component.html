@@ -1,0 +1,21 @@
+<div *ngIf="this.isThreadDataArrived">
+  <h3 class="p-3 text-center">
+    {{this.forum.title}} Forum
+  </h3>
+</div>
+
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="thread-tree" *ngIf="this.isThreadDataArrived">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+    <div class="mat-tree-node"><app-thread-entry [threadEntry]="node"></app-thread-entry></div>
+  </mat-tree-node>
+  <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+    <li>
+      <div class="mat-tree-node">
+        <app-thread-entry [threadEntry]="node"></app-thread-entry>
+      </div>
+      <ul [class.example-tree-invisible]="!treeControl.isExpanded(node)">
+        <ng-container matTreeNodeOutlet></ng-container>
+      </ul>
+    </li>
+  </mat-nested-tree-node>
+</mat-tree>

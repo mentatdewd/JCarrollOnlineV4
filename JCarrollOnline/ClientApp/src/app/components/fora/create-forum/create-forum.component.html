@@ -1,0 +1,22 @@
+<div class="container">
+
+  <h1>Create Forum</h1>
+
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+
+    <div>
+      <label for="title">
+        Title
+      </label>
+      <input id="title" type="text" [(ngModel)]="model.title" formControlName="title">
+    </div>
+
+    <div>
+      <label for="description">
+        Description
+      </label>
+      <input id="description" type="text" [(ngModel)]="model.description" formControlName="description">
+    </div>
+    <button class="button" type="submit">Create</button>
+  </form>
+</div>

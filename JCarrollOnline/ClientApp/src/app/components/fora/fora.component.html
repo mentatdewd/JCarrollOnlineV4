@@ -1,0 +1,33 @@
+<div [@fadeInOut]>
+  <div #widgetsContainer>
+    <h3 class="p-3 text-center">Fora</h3>
+    <div class="container">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Description</th>
+            <th>Author</th>
+            <th>Created on</th>
+            <th>Updated on</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let forum of this.fora">
+            <td><a [routerLink]="['./threads']" [queryParams]="{forumId: forum.id}">{{forum.title}}</a></td>
+
+            <td>{{forum.description}}</td>
+            <td>{{forum.author}}</td>
+            <td>{{forum.createdAt}}</td>
+            <td>{{forum.updatedAt}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+    <p class="float-right">
+      <button [routerLink]="'./create-forum'">Create New Forum</button>
+    </p>
+  </div>
+</div>

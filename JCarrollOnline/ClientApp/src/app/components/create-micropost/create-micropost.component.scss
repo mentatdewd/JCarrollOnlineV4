@@ -1,0 +1,19 @@
+.center {
+  text-align: center;
+}
+
+.input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.char-count {
+  color: gray;
+  margin-top: 5px;
+}

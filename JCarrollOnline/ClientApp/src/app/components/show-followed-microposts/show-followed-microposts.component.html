@@ -1,0 +1,13 @@
+<div class="microposts-feed">
+  <h3 class="center">Microposts</h3>
+
+  <div>
+    <cdk-virtual-scroll-viewport class="microposts-viewport" itemSize="120" fxFlex>
+      <div fxLayout="column" *ngFor="let post of this.posts">
+        <div>
+          <app-micropost-entry [post]="post"></app-micropost-entry>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

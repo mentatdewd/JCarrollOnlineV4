@@ -1,0 +1,31 @@
+<div class="p-3 text-center">
+  <div *ngIf="isForumDataArrived">
+    <h1>{{forum.title}}</h1>
+    <h3>Create Thread</h3>
+  </div>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+
+    <div class="title-container">
+      <mat-form-field fxFlex appearance="outline" floatLabel="always" required subscriptSizing="dynamic">
+        <mat-label>Title</mat-label>
+        <input matInput
+               placeholder="Enter title"
+               formControlName="title">
+      </mat-form-field>
+    </div>
+
+    <div class="content-container">
+      <mat-form-field fxFlex appearance="outline" floatLabel="always" subscriptSizing="dynamic">
+        <mat-label>Content</mat-label>
+        <textarea class="input-row"
+                  matInput
+                  placeholder="Enter post"
+                  formControlName="content"
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="6"
+                  maxlength="240"></textarea>
+      </mat-form-field>
+    </div>
+    <button class="button" type="submit">Create</button>
+  </form>
+</div>

@@ -1,0 +1,18 @@
+<div class="post-item">
+  <div fxFlex>
+    <mat-divider></mat-divider>
+    <img class="app-gravatar" appGravatar email={{post.authorEmail}}>
+    <div class="author-text">
+      <h3>{{post.author}}</h3>
+    </div>
+    <div>
+      <div class="micropost-content clear">
+        {{post.content}}
+      </div>
+      <div class="timeago-container">
+        Posted
+      </div>
+      <div class="timeago-line" timeago [date]="post.updatedAt"></div>
+    </div>
+  </div>
+</div>

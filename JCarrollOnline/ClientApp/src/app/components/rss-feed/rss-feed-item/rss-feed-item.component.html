@@ -1,0 +1,16 @@
+<div *ngIf="this.isThreadDataArrived">
+  <div>
+    <mat-card class="card-container">
+      <mat-card-title>
+        <div class="rss-item-container">
+          <img src={{this.rssEntry.image[0].$.href}} width="80" height="45">
+          <a href={{this.rssEntry.link}} target="_blank"><div class="rss-link-item">{{this.rssEntry.title}}</div></a>
+        </div>
+      </mat-card-title>
+      <mat-card-content>
+      </mat-card-content>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+</div>

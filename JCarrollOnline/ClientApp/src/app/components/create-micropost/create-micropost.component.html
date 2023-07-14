@@ -1,0 +1,19 @@
+<h3 class="center">Create a Micropost</h3>
+
+<div>
+  <form [formGroup]="createForm" (ngSubmit)="onSubmit()" fxFlex fxLayout="column" fxLayoutAlign="start center" align-items="stretch">
+    <mat-form-field fxFlex>
+      <textarea class="input-row"
+                [characterCountContainer]="c"
+                matInput
+                placeholder="Compose new micropost (140 char max...)"
+                formControlName="content"
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="6"
+                maxlength="240"></textarea>
+    </mat-form-field>
+    <div><button class="button" type="submit">Create</button></div>
+    <div class="char-count" #c></div>
+  </form>
+</div>
+

@@ -1,0 +1,18 @@
+<div class="p-3 text-center">
+  <div *ngIf="isForumDataArrived && isParentDataArrived">
+    <h1>{{forum.title}}</h1>
+    <h3>Create Thread</h3>
+  </div>
+  <form [formGroup]="templateForm" (ngSubmit)="onSubmit()">
+    <angular-markdown-editor textareaId="editor1" rows="12"
+                             formControlName="body"
+                             (onFullscreenExit)="hidePreview()">
+    </angular-markdown-editor>
+    <h3 class="text-success bold">Preview</h3>
+    <div class="result-preview outline">
+      <markdown [data]="markdownText"></markdown>
+    </div>
+    <!--</mat-form-field>-->
+    <button class="button" type="submit">Create</button>
+  </form>
+</div>

@@ -1,0 +1,25 @@
+<div class="rss-feed-container">
+  <h3 class="center">Mariners News</h3>
+  <div *ngIf="isFeedDataArrived">
+    <!--<div *ngFor="let entry of this.theMarinersRssData.rss.channel[0].item">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-divider></mat-divider>
+            <a href="{{entry.link}}" target="_blank">{{entry.title}}</a>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </div>-->
+    <div *ngFor="let rssItem of this.theMarinersRssData.rss.channel[0].item">
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-divider></mat-divider>
+            <app-rss-feed-item class="rss-feed-item" [rssEntry]="rssItem"></app-rss-feed-item>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+      </mat-expansion-panel>
+    </div>
+  </div>
+</div>
