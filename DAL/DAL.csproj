@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Version>7.2.0</Version>
+    <Description>Data Access Layer for the JCarrollOnlineV4 application</Description>
+    <Copyright>Copyright © 2023 Mentat Studio</Copyright>
+    <PackageProjectUrl>https://jcarrollonlinev4.jcarrollonline.com/jcarrollonlinev4</PackageProjectUrl>
+    <Company>Mentat Studios</Company>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="7.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="7.0.8" />
+  </ItemGroup>
+
+</Project>
