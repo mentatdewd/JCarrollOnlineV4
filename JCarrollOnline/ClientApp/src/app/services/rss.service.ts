@@ -6,7 +6,7 @@ import { AuthService } from './auth.service';
 @Injectable({
   providedIn: 'root'
 })
-export class RSSSevice {
+export class RSSService {
 
   apiUrl: string = 'https://localhost:44450/api/RSS/';
 

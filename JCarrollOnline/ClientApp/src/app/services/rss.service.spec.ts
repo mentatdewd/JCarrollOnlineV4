@@ -2,12 +2,12 @@ import { TestBed } from '@angular/core/testing';
 
 import { RSSService } from './rss.service';
 
-describe('RSSSeviceService', () => {
-  let service: RSSSeviceService;
+describe('RSSService', () => {
+  let service: RSSService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RSSSeviceService);
+    service = TestBed.inject(RSSService);
   });
 
   it('should be created', () => {

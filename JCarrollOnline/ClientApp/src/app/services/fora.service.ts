@@ -10,8 +10,8 @@ import {
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
 import { ForaModel } from '../models/Fora/fora.model';
-import { ThreadEntryNode } from '../models/Threads/ThreadEntryNode.Model';
-import { ThreadsModel } from '../models/Threads/ThreadsModel';
+import { ThreadEntryNode } from '../models/threads/ThreadEntryNode.Model';
+import { ThreadsModel } from '../models/threads/ThreadsModel';
 import { AuthService } from './auth.service';
 
 @Injectable({

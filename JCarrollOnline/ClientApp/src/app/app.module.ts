@@ -18,7 +18,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MarkdownModule, MarkedOptions } from 'ngx-markdown';
 import { AngularMarkdownEditorModule } from 'angular-markdown-editor';
 
-import { NgbModalModule, NgbTooltipModule, NgbPopoverModule, NgbDropdownModule, NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalModule, NgbTooltipModule, NgbPopoverModule, NgbDropdownModule, NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { OAuthModule } from 'angular-oauth2-oidc';
@@ -40,7 +40,7 @@ import { NotificationEndpoint } from './services/notification-endpoint.service';
 import { AccountService } from './services/account.service';
 import { AccountEndpoint } from './services/account-endpoint.service';
 
-import { EqualValidator } from './directives/equal-validator.directive';
+//import { EqualValidator } from './directives/equal-validator.directive';
 import { AutofocusDirective } from './directives/autofocus.directive';
 import { BootstrapTabDirective } from './directives/bootstrap-tab.directive';
 import { GroupByPipe } from './pipes/group-by.pipe';
@@ -89,7 +89,7 @@ import { TemplateComponent } from './components/template/template.component';
     NotFoundComponent,
     NotificationsViewerComponent,
     SearchBoxComponent,
-    EqualValidator,
+    //EqualValidator,
     AutofocusDirective,
     BootstrapTabDirective,
     GroupByPipe,
@@ -110,7 +110,7 @@ import { TemplateComponent } from './components/template/template.component';
     ThreadEntryComponent,
     RssFeedItemComponent,
     TemplateComponent,
-  ],
+ ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -130,6 +130,7 @@ import { TemplateComponent } from './components/template/template.component';
     NgbDropdownModule,
     NgbCarouselModule,
     NgbModalModule,
+    NgbModule,
     NgxDatatableModule,
     OAuthModule.forRoot(),
     ToastaModule.forRoot(),

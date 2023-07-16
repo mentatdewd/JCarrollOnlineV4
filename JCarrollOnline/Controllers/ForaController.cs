@@ -1,12 +1,14 @@
 ﻿using AutoMapper;
 using DAL;
 using DAL.Models;
+using DAL.Repositories.Interfaces;
 using JCarrollOnline.Helpers;
 using JCarrollOnline.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.Extensions.Logging;
 using Org.BouncyCastle.Utilities;
 using System;
@@ -44,18 +46,20 @@ namespace JCarrollOnline.Controllers
 
         [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpPost("CreateForum")]
-        public async Task<ActionResult<ForaViewModel>> CreateForum([FromBody] ForaViewModel foraViewModel)
+        public async Task<ActionResult<ForumViewModel>> CreateForum([FromBody] ForumViewModel forumViewModel)
         {
-            Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Forum> forumEntry;
+            EntityEntry<Forum> forumEntry;
 
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(foraViewModel.Title) || string.IsNullOrEmpty(foraViewModel.Description))
+                IForumRepository forumRepository = _unitOfWork.Fora;
+
+                if (string.IsNullOrEmpty(forumViewModel.Title) || string.IsNullOrEmpty(forumViewModel.Description))
                 {
                     return BadRequest(ModelState);
                 }
 
-                bool result = _context.Fora.Any(a => a.Title == foraViewModel.Title);
+                bool result = forumRepository.GetAllFora().Any(a => a.Title == forumViewModel.Title);
                 if (result)
                 {
                     return BadRequest(ModelState);
@@ -63,18 +67,18 @@ namespace JCarrollOnline.Controllers
 
                 Forum forum = new Forum();
 
-                _mapper.Map(foraViewModel, forum);
+                _mapper.Map(forumViewModel, forum);
                 forum.CreatedAt = DateTime.Now;
                 forum.UpdatedAt = DateTime.Now;
 
-                forumEntry = _context.Fora.Add(forum);
-                await _context.SaveChangesAsync().ConfigureAwait(false);
-                if (forumEntry != null)
-                {
-                    _mapper.Map(forumEntry.Entity, foraViewModel);
-                    return Ok(foraViewModel);
-                }
-                return BadRequest();
+                forumEntry = forumRepository.CreateForum(forum);
+
+                //await _context.SaveChangesAsync();
+                await _unitOfWork.SaveChanges();
+
+                _mapper.Map(forumEntry.Entity, forumViewModel);
+
+                return Ok(forumViewModel);
             }
             else { return BadRequest(); }
         }
@@ -89,11 +93,11 @@ namespace JCarrollOnline.Controllers
 
                 foreach (Forum forum in _context.Fora)
                 {
-                    ForaViewModel foraModel = new ForaViewModel();
+                    ForaViewModel foraViewModel = new ForaViewModel();
 
                     //foraModel.InjectFrom(forum);
-                    _mapper.Map(forum, foraModel);
-                    fora.Add(foraModel);
+                    _mapper.Map(forum, foraViewModel);
+                    fora.Add(foraViewModel);
                 }
 
                 return fora;
@@ -103,15 +107,15 @@ namespace JCarrollOnline.Controllers
 
         [Authorize(AuthenticationSchemes = "Bearer")]
         [HttpGet("GetForum/{id?}")]
-        public async Task<ActionResult<ForaViewModel>> GetForum(int id)
+        public async Task<ActionResult<ForumViewModel>> GetForum(int id)
         {
             if (ModelState.IsValid)
             {
-                ForaViewModel fora = new ForaViewModel();
+                ForumViewModel fora = new ForumViewModel();
 
                 Forum forum = await _context.Fora.FirstOrDefaultAsync(f => f.Id == id);
 
-                ForaViewModel forumModel = new ForaViewModel();
+                ForumViewModel forumModel = new ForumViewModel();
 
                 _mapper.Map(forum, forumModel);
 
@@ -163,7 +167,7 @@ namespace JCarrollOnline.Controllers
                             ForumThreadsViewModel forumThreadsViewModel = new ForumThreadsViewModel();
 
                             _mapper.Map(fte, forumThreadsViewModel);
-                            forumThreadsViewModel.Replies = forum.ForumThreadEntries.Where(forumThreadEntry => forumThreadEntry.RootId == fte.Id && forumThreadEntry.ParentId != null).Count();
+                            forumThreadsViewModel.Replies = forum.ForumThreadEntries.Where(forumThreadEntry => forumThreadEntry.RootId == fte.Id).Count();
                             ForumThreadEntry lastUpdated = forum.ForumThreadEntries.Where(forumThreadEntry => forumThreadEntry.RootId == fte.Id).FirstOrDefault();
 
                             if (lastUpdated != null)

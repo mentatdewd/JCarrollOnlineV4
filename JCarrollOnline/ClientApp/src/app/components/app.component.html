@@ -1,6 +1,6 @@
-<ngx-toasta></ngx-toasta>
-<jcol-navbar></jcol-navbar>
-
+<div>
+  <jcol-navbar></jcol-navbar>
+</div>
 <div class="app-component app-container">
   <div id="pre-bootstrap" *ngIf="!isAppLoaded" class="prebootStep prebootShow">
     <div class="messaging">
@@ -14,6 +14,7 @@
     </div>
   </div>
 
+  <ngx-toasta></ngx-toasta>
   <main class="container-xl px-3 px-md-4 px-xxl-5">
     <router-outlet></router-outlet>
     <div class="footer-height"></div>

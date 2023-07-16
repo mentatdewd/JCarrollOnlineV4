@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EditorInstance, EditorOption } from 'angular-markdown-editor';
 import { ForumModel } from '../../../../../models/Fora/forum.model';
-import { ThreadEntryNode } from '../../../../../models/Threads/ThreadEntryNode.Model';
+import { ThreadEntryNode } from '../../../../../models/threads/ThreadEntryNode.Model';
 import { fadeInOut } from '../../../../../services/animations';
 import { ForaService } from '../../../../../services/fora.service';
 import { MarkdownService } from 'ngx-markdown';

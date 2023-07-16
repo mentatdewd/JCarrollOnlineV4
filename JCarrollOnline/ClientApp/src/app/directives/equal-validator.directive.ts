@@ -44,3 +44,4 @@ export class EqualValidator implements Validator {
     return null;
   }
 }
+ // Could not resolve dependency: @angular/animations@"^15.0.0" from ngx-bootstrap@10.2.0

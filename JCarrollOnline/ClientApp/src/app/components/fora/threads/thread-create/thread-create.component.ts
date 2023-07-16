@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ForumModel } from '../../../../models/Fora/forum.model';
-import { ThreadModel } from '../../../../models/threads/ThreadModel';
 import { fadeInOut } from '../../../../services/animations';
 import { ForaService } from '../../../../services/fora.service';
+import { ThreadModel } from '../../../../models/threads/ThreadModel';
 
 @Component({
   selector: 'app-thread-create',

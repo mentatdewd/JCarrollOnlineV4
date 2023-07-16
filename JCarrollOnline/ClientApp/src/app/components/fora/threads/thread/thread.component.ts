@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ThreadEntryNode } from '../../../../models/Threads/ThreadEntryNode.Model';
+import { ThreadEntryNode } from '../../../../models/threads/ThreadEntryNode.Model';
 import { NestedTreeControl } from "@angular/cdk/tree";
 import { MatTreeNestedDataSource } from "@angular/material/tree";
 import { ActivatedRoute, Router } from '@angular/router';

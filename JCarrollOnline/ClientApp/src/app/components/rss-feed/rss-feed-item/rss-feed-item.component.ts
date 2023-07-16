@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ItemModel } from '../../../Models/RSSFeedModel';
+import { ItemModel } from '../../../models/RSSFeedModel';
 
 @Component({
   selector: 'app-rss-feed-item',

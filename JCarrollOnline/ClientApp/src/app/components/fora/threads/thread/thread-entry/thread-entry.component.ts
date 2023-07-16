@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ThreadEntryNode } from '../../../../../models/Threads/ThreadEntryNode.Model';
+import { ThreadEntryNode } from '../../../../../models/threads/ThreadEntryNode.Model';
 import { ForaService } from '../../../../../services/fora.service';
 
 @Component({

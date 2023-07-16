@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using JCarrollOnline.ViewModels;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 
 namespace jcarrollonlinev4.backend.controllers
 {
@@ -19,42 +20,41 @@ namespace jcarrollonlinev4.backend.controllers
         private readonly IMapper _mapper;
         private readonly IUnitOfWork _unitOfWork;
         private readonly ILogger _logger;
-        private readonly UserManager<ApplicationUser> _userManager;
         private readonly ApplicationDbContext _context;
 
-        public ForumThreads(ApplicationDbContext dataContext)
+        public ForumThreads(ApplicationDbContext dataContext, IMapper mapper, IUnitOfWork unitOfWork, ILogger logger)
         {
             _context = dataContext;
+            _mapper = mapper;
+            _unitOfWork = unitOfWork;
+            _logger = logger;
         }
 
         [HttpPost("CreateForumThread")]
-        public async Task<ActionResult<ForumThreadViewModel>> CreateForumThread([FromBody] ForumThreadViewModel forumThreadEntryCreateModel)
+        public async Task<ActionResult<ForumThreadViewModel>> CreateForumThread([FromBody] ForumThreadViewModel forumThreadViewModel)
         {
             Microsoft.EntityFrameworkCore.ChangeTracking.EntityEntry<Forum> forumEntry;
+            _logger.LogInformation("CreateForumThread");
 
             if (ModelState.IsValid)
             {
-                if (string.IsNullOrEmpty(forumThreadEntryCreateModel.Title) || string.IsNullOrEmpty(forumThreadEntryCreateModel.Content))
-                {
-                    return BadRequest(ModelState);
-                }
-
-                bool result = _context.Fora.Any(a => a.Title == forumThreadEntryCreateModel.Title);
-                if (result)
+                if (string.IsNullOrEmpty(forumThreadViewModel.Title) || string.IsNullOrEmpty(forumThreadViewModel.Content))
                 {
                     return BadRequest(ModelState);
                 }
 
                 Forum forum = new Forum();
 
-                //forum.InjectFrom(forumThreadEntryCreateModel);
-                //forum.CreatedAt = DateTime.Now;
-                //forum.UpdatedAt = DateTime.Now;
+                _mapper.Map(forumThreadViewModel, forum);
+                forum.CreatedAt = DateTime.Now;
+                forum.UpdatedAt = DateTime.Now;
                 forumEntry = _context.Fora.Add(forum);
-                //await _database.SaveChangesAsync().ConfigureAwait(false);
+
+                await _context.SaveChangesAsync().ConfigureAwait(false);
+
                 if (forumEntry != null)
                 {
-                    return CreatedAtAction(nameof(CreateForumThread), new { id = forumEntry.Entity.Id }, forumThreadEntryCreateModel);
+                    return CreatedAtAction(nameof(CreateForumThread), new { id = forumEntry.Entity.Id }, forumThreadViewModel);
                 }
                 return BadRequest();
             }
@@ -78,7 +78,7 @@ namespace jcarrollonlinev4.backend.controllers
         {
             if (ModelState.IsValid)
             {
-                Forum? forum = await _context.Fora.SingleOrDefaultAsync(x => x.Id == id);
+                Forum forum = await _context.Fora.SingleOrDefaultAsync(x => x.Id == id);
 
                 if (forum != null)
                 {

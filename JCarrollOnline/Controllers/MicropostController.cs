@@ -65,7 +65,7 @@ namespace JCarrollOnline.Controllers
             micropost.Author = application_user;
 
             _unitOfWork.Microposts.AddMicropost(application_user, micropost);
-            _unitOfWork.SaveChanges();
+            await _unitOfWork.SaveChanges();
 
             _logger.LogWarning("In MicropostController");
             return Ok();

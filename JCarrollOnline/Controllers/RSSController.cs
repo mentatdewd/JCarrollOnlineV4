@@ -13,12 +13,14 @@ namespace JCarrollOnline.Controllers
     public class RSSController : Controller
     {
         private readonly ILogger _logger;
-        private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
 
         public RSSController(IMapper mapper, 
             UserManager<ApplicationUser> userManager,
-            ILogger<MicropostController> logger){ }
+            ILogger<MicropostController> logger){
+            _logger = logger;
+            _mapper = mapper;
+        }
 
         [HttpGet("theMariners")]
         public async Task<IActionResult> TheMariners()

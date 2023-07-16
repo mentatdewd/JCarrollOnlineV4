@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 //import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,15 +10,18 @@ import { Router } from '@angular/router';
   styleUrls: ['./jcol-navbar.component.scss']
 })
 
-export class JcolNavbarComponent {
-  public isUserLoggedIn: true;
-  public canViewCustomers: true;
-  public canViewProducts: true;
-  public canViewOrders: true;
+export class JcolNavbarComponent implements OnInit {
+  public isUserLoggedIn: boolean;
   public markNotificationsAsRead: true;
   public notificationsTitle: "";
   public userName: "";
   newNotificationCount: 1;
 
-  constructor(public router: Router) { }
+  constructor(public router: Router, private authService: AuthService) { }
+
+  ngOnInit() {
+    this.authService.getLoginStatusEvent().subscribe(isLoggedIn => {
+      this.isUserLoggedIn = isLoggedIn;
+    });
+  }
 }

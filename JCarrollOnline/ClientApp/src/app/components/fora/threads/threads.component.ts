@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ForumModel } from '../../../models/Fora/forum.model';
-import { ThreadsModel } from '../../../models/Threads/ThreadsModel';
+import { ThreadsModel } from '../../../models/threads/ThreadsModel';
 import { fadeInOut } from '../../../services/animations';
 import { ForaService } from '../../../services/fora.service';
 

@@ -42,10 +42,12 @@ namespace JCarrollOnline.ViewModels
             CreateMap<IdentityRoleClaim<string>, PermissionViewModel>()
                 .ConvertUsing(s => (PermissionViewModel)ApplicationPermissions.GetPermissionByValue(s.ClaimValue));
 
-            CreateMap<Forum, ForaViewModel>().ReverseMap()
+            CreateMap<Forum, ForumViewModel>().ReverseMap()
                                 .ForMember(d => d.Id, map => map.Condition(src => src.Id != -1))
                                 .ForMember(d => d.ForumThreadEntries, map => map.Ignore())
             .ForMember(d => d.ForumModerators, map => map.Ignore());
+
+            CreateMap<Forum, ForaViewModel>().ReverseMap();
 
             CreateMap<ForumThreadEntry, ForumThreadEntryViewModel>()
                                        .ReverseMap()

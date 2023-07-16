@@ -1,93 +1,80 @@
 <div class="app-component app-container">
+  <ngx-toasta></ngx-toasta>
+
   <a class="close-navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target=".menuItemsContainer">
   </a>
-  <nav id="header" class="navbar navbar-expand-lg navbar-light bg-primary fixed-top">
+
+  <nav id="header" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container-xl px-md-3 px-xxl-4">
-      <div ngPreserveWhitespaces class="navbar-brand" routerLink="/">
-        <span class="d-lg-none d-xl-inline">
-          JCarrollOnline
-        </span>
-        <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".menuItemsContainer">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+      <a ngPreserveWhitespaces class="navbar-brand" routerLink="/">
+        <!--<img src="assets/images/logo-white.png" class="d-inline-block align-top" alt="logo">-->
+        <span class="d-xl-inline">JCarrollOnline</span>
+      </a>
+      <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".menuItemsContainer">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-        <div *ngIf="isUserLoggedIn" class="collapse navbar-collapse menuItemsContainer">
-          <ul class="nav nav-pills white flex-column flex-lg-row">
-            <li class="nav-item">
-              <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Users">Users</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" routerLink="/fora">Fora</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Profile">Profile</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" routerLink="/about">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Contact">Contact</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Sandbox">Sandbox</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Yellowstone">Yellowstone Slideshow</a>
-            </li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item">
-              <a class="nav-link active" href="Register">Register</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" href="Login">Login</a>
-            </li>
-          </ul>
-        </div>
+      <div *ngIf="isUserLoggedIn" class="collapse navbar-collapse menuItemsContainer">
+        <ul class="nav nav-pills white flex-column flex-lg-row">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Users">Users</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/fora">Fora</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Profile">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" routerLink="/about">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Sandbox">Sandbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Yellowstone">Yellowstone Slideshow</a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item">
+            <a class="nav-link active" href="Register">Register</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="Login">Login</a>
+          </li>
+        </ul>
+        <span class="navbar-text notifications-popup d-lg-none d-xl-inline-block">{{'app.Welcome' | translate}}</span>
+        <a class="nav-link user-name d-inline-block px-1" [ngbPopover]="popTemplate" (hidden)="markNotificationsAsRead()"
+           placement="bottom" [popoverTitle]="notificationsTitle" href="javascript:;" triggers="focus" popoverClass="notifications-popup">
+          {{userName}}
+          <span *ngIf="newNotificationCount > 0" class="badge bg-secondary">{{newNotificationCount}}</span>
+        </a>
+        <ng-template #popTemplate>
+          <app-notifications-viewer [isViewOnly]="true"></app-notifications-viewer>
+        </ng-template>
+        <span *ngIf="newNotificationCount > 0" class="navbar-text d-none d-lg-inline">, </span>
+        <ul class="nav nav-pills flex-column flex-lg-row ms-lg-1">
+          <li class="nav-item" (click)="logout()">
+            <a class="nav-link" href="javascript:;"><i class="fa fa-sign-out"></i> {{'mainMenu.Logout' | translate}}</a>
+          </li>
+        </ul>
+      </div>
 
-        <div *ngIf="!isUserLoggedIn" class="collapse navbar-collapse menuItemsContainer">
-          <ul class="nav nav-pills flex-column flex-lg-row ms-auto">
-            <li class="nav-item" routerLinkActive="active">
-              <ul class="nav nav-pills white flex-column flex-lg-row">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" routerLink="/">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Users">Users</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" routerLink="/fora">Fora</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Profile">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" routerLink="/about">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Contact">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Sandbox">Sandbox</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Yellowstone">Yellowstone Slideshow</a>
-                </li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li class="nav-item">
-                  <a class="nav-link active" href="Register">Register</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link active" href="Login">Login</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </div>
+      <div *ngIf="!isUserLoggedIn" class="collapse navbar-collapse menuItemsContainer">
+        <ul class="nav nav-pills flex-column flex-lg-row ms-auto">
+          <li class="nav-item" routerLinkActive="active">
+            <a *ngIf="router.isActive('/about', false); else aboutPageNavTemplate" class="nav-link" routerLink="/login"><i class="fa fa-sign-in"></i></a>
+            <ng-template #aboutPageNavTemplate>
+              <a class="nav-link" routerLink="/about"><i class="fa fa-info-circle"></i></a>
+            </ng-template>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

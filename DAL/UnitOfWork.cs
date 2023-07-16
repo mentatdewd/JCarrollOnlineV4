@@ -1,5 +1,6 @@
 ﻿using DAL.Repositories;
 using DAL.Repositories.Interfaces;
+using System.Threading.Tasks;
 
 namespace DAL
 {
@@ -7,9 +8,8 @@ namespace DAL
     {
         private readonly ApplicationDbContext _context;
         private IMicropostRepository _microposts;
-        //private ICustomerRepository _customers;
-        //private IProductRepository _products;
-        //private IOrdersRepository _orders;
+        private IForumRepository _fora;
+        private IForumThreadEntryRepository _forumThreadEntry;
 
         public UnitOfWork(ApplicationDbContext context)
         {
@@ -26,39 +26,27 @@ namespace DAL
             }
         }
 
-        //public ICustomerRepository Customers
-        //{
-        //    get
-        //    {
-        //        _customers ??= new CustomerRepository(_context);
-
-        //        return _customers;
-        //    }
-        //}
-
-        //public IProductRepository Products
-        //{
-        //    get
-        //    {
-        //        _products ??= new ProductRepository(_context);
-
-        //        return _products;
-        //    }
-        //}
-
-        //public IOrdersRepository Orders
-        //{
-        //    get
-        //    {
-        //        _orders ??= new OrdersRepository(_context);
-
-        //        return _orders;
-        //    }
-        //}
-
-        public int SaveChanges()
+        public IForumRepository Fora
         {
-            return _context.SaveChanges();
+            get
+            {
+                _fora ??= new ForumRepository(_context);
+                return _fora;
+            }
+        }
+
+        public IForumThreadEntryRepository ForumThreadEntry
+        {
+            get
+            {
+                _forumThreadEntry ??= new ForumThreadEntryRepository(_context);
+                return _forumThreadEntry;
+            }
+        }
+
+        public async Task<int> SaveChanges()
+        {
+            return await _context.SaveChangesAsync();
         }
     }
 }

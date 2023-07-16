@@ -1,7 +1,7 @@
 import { Component, Input } from "@angular/core";
 import * as xml2js from "xml2js";
-import { ItemModel, RSSModel } from '../../Models/RSSFeedModel';
-import { RSSSevice } from '../../services/rss.service';
+import { ItemModel, RSSModel } from '../../models/RSSFeedModel';
+import { RSSService } from '../../services/rss.service';
 
 @Component({
   selector: 'app-rss-feed',
@@ -12,7 +12,7 @@ import { RSSSevice } from '../../services/rss.service';
 //under class
 export class RssFeedComponent {
 
-  constructor(private rssService: RSSSevice) { }
+  constructor(private rssService: RSSService) { }
   ngOnInit(): void {
     this.GetRssFeedData()
   }

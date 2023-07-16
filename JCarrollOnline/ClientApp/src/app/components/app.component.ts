@@ -72,7 +72,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   ngOnInit() {
-    this.isUserLoggedIn = this.authService.isLoggedIn;
+    this.isUserLoggedIn = true;// this.authService.isLoggedIn;
 
     // Extra sec to display preboot loaded information
     setTimeout(() => this.isAppLoaded = true, 1000);

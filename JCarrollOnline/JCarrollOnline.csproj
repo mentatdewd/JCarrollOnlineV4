@@ -75,7 +75,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\app\models\Threads\ThreadsModel.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\threads\ThreadsModel.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\micropost-feed-item.model.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\models\RSSFeedModel.ts" />
   </ItemGroup>

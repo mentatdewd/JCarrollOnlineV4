@@ -7,10 +7,12 @@ namespace DAL.Repositories
 {
     public class MicropostRepository : Repository<Micropost>, IMicropostRepository
     {
-        public MicropostRepository(ApplicationDbContext context) : base(context)
-        { }
+        public MicropostRepository(ApplicationDbContext appDbContext) : base(appDbContext)
+        {
+            AppDbContext = appDbContext;
+        }
 
-        public IEnumerable<Micropost> GetAllMicroposts()
+        public IEnumerable<Micropost> GetAllMicroposts(ApplicationUser user)
         {
             throw new NotImplementedException();
         }
@@ -23,9 +25,13 @@ namespace DAL.Repositories
             }
 
             user.MicroPosts.Add(micropost);
-            _appContext.Users.Update(user);
+            _appDbContext.Users.Update(user);
         }
-        private ApplicationDbContext _appContext => (ApplicationDbContext)_context;
-
+        private ApplicationDbContext _appDbContext;
+        public ApplicationDbContext AppDbContext
+        {
+            get => _appDbContext;
+            init => _appDbContext = value;
+        }
     }
 }

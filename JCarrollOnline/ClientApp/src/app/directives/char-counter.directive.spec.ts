@@ -1,8 +1,8 @@
-import { CharCounterDirective } from './char-counter.directive';
+import { CharacterCountDirective } from './char-counter.directive';
 
-describe('CharCounterDirective', () => {
+describe('CharCountDirective', () => {
   it('should create an instance', () => {
-    const directive = new CharCounterDirective();
+    const directive = new CharacterCountDirective();
     expect(directive).toBeTruthy();
   });
 });
